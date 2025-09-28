@@ -2,15 +2,18 @@ import React from 'react'
 import Image from 'next/image'
 
 const skills = [
+  { skill: 'TypeScript' },
   { skill: 'Python' },
-  { skill: 'JavaScript' },
-  { skill: 'AWS' },
-  { skill: 'SQL' },
+  { skill: 'React' },
   { skill: 'Next.js' },
+  { skill: 'Tailwind CSS' },
   { skill: 'Node.js' },
   { skill: 'Express' },
+  { skill: 'SQL' },
   { skill: 'MongoDB' },
-  { skill: 'HTML/CSS' },
+  { skill: 'AWS' },
+  { skill: 'Power BI' },
+  { skill: 'Data Visualization' },
 ]
 
 const AboutSection = () => {

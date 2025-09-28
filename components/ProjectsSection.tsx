@@ -4,21 +4,54 @@ import Link from 'next/link'
 import { BsGithub, BsArrowUpRightSquare } from 'react-icons/bs'
 import SlideUp from './SlideUp'
 
-const projects = [
+type Project = {
+    name: string
+    description: string
+    image: string
+    github: string
+    link: string
+    highlights?: string[]
+    techStack?: string[]
+}
+
+const projects: Project[] = [
+    {
+        name: 'Instagram Follower Insights',
+        description: 'Privacy-first analytics suite that parses Instagram follower exports entirely in the browser. Compare snapshots over time, surface pending requests, and keep every dataset encrypted on-device.',
+        image: '/instagram-insights.png',
+        github: 'https://github.com/matucho01/instagram-follower-insights',
+        link: 'https://github.com/matucho01/instagram-follower-insights',
+        highlights: [
+            'Offline parsing pipeline with Web Workers, JSZip, and Papaparse',
+            'Encrypted saved sessions powered by AES-GCM + IndexedDB',
+            'Snapshot comparison view to track gained and lost followers',
+        ],
+        techStack: ['Next.js 15', 'TypeScript', 'Zustand', 'Tailwind CSS', 'JSZip', 'Vitest'],
+    },
     {
         name: 'Open Attestation Verification Application',
-        description: 'Project developed for CSIRT. The application allows users to verify Open Attestation documents using the Open Attestation API. The application was developed using Next.js, Tailwind CSS, and JavaScript.',
+        description: 'Verification dashboard for CSIRT that validates Open Attestation documents against the official API, providing instant feedback for credential authenticity checks.',
         image: '/oa-verification-menu.png',
         github: 'https://github.com/matucho01/oa-verification',
-        link: 'https://github.com/matucho01/oa-verification'
+        link: 'https://github.com/matucho01/oa-verification',
+        highlights: [
+            'One-click verification flow for OA-compliant documents',
+            'Responsive UI built with Next.js + Tailwind CSS',
+        ],
+        techStack: ['Next.js', 'Tailwind CSS', 'JavaScript'],
     },
     {
         name: 'Game Gather Client',
-        description: 'Project developed for Advanced Web Applications course. The application allows users to be part of a community of gamers. Signups, logins, and user profiles are available. The application was developed using React, Tailwind CSS, and TypeScript.',
+        description: 'Community platform that helps gamers discover parties, manage profiles, and coordinate play sessions across multiple titles with a responsive, mobile-first design.',
         image: '/gamegather-menu.png',
         github: 'https://github.com/matucho01/game-gather-client',
-        link: 'https://github.com/matucho01/game-gather-client'
-    }
+        link: 'https://github.com/matucho01/game-gather-client',
+        highlights: [
+            'Authentication and profile management with protected routes',
+            'Reusable UI component system styled with Tailwind CSS',
+        ],
+        techStack: ['React', 'Tailwind CSS', 'TypeScript'],
+    },
 ]
 
 const ProjectsSection = () => {
@@ -38,7 +71,7 @@ const ProjectsSection = () => {
                                         <Link href={project.link} target='_blank'>
                                             <Image
                                                 src={project.image}
-                                                alt={project.name}
+                                                alt={`${project.name} preview`}
                                                 width={1000}
                                                 height={1000}
                                                 className='rounded-xl shadow-xl hover:opacity-70'
@@ -50,6 +83,28 @@ const ProjectsSection = () => {
                                         <p className='text-xl leading-7 mb-4 text-neutral-600 dark:text-neutral-400'>
                                             {project.description}
                                         </p>
+                                        {project.highlights && (
+                                            <ul className='mb-6 space-y-2 text-neutral-600 dark:text-neutral-400'>
+                                                {project.highlights.map((highlight, highlightIdx) => (
+                                                    <li key={highlightIdx} className='flex items-start text-base'>
+                                                        <span className='mr-2 mt-1 h-2 w-2 rounded-full bg-teal-500'></span>
+                                                        <span>{highlight}</span>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        )}
+                                        {project.techStack && (
+                                            <div className='mb-6 flex flex-wrap gap-3'>
+                                                {project.techStack.map((tech, techIdx) => (
+                                                    <span
+                                                        key={techIdx}
+                                                        className='rounded-full bg-teal-50 px-3 py-1 text-sm font-semibold text-teal-700 dark:bg-stone-800 dark:text-teal-200'
+                                                    >
+                                                        {tech}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                        )}
                                         <div className='flex flex-row align-bottom space-x-4'>
                                             <Link href={project.github} target='_blank'>
                                                 <BsGithub
