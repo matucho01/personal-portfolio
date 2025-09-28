@@ -20,7 +20,7 @@ const projects: Project[] = [
         description: 'Privacy-first analytics suite that parses Instagram follower exports entirely in the browser. Compare snapshots over time, surface pending requests, and keep every dataset encrypted on-device.',
         image: '/instagram-insights.png',
         github: 'https://github.com/matucho01/instagram-follower-insights',
-        link: 'https://github.com/matucho01/instagram-follower-insights',
+        link: 'https://instagram-follower-insights.vercel.app/',
         highlights: [
             'Offline parsing pipeline with Web Workers, JSZip, and Papaparse',
             'Encrypted saved sessions powered by AES-GCM + IndexedDB',
